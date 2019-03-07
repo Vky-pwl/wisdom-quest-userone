@@ -1,0 +1,19 @@
+
+<mat-grid-list cols="4" rowHeight="45px" gutterSize="0" class="border-bottom">
+    <mat-grid-tile
+    [colspan]="2"
+    [rowspan]="1"
+    [style.background]="lightblue">
+</mat-grid-tile>
+<mat-grid-tile
+[colspan]="1"
+[rowspan]="1"
+[style.background]="lightblue">
+</mat-grid-tile>
+    <mat-grid-tile
+        [colspan]="1"
+        [rowspan]="1"
+        [style.background]="lightblue">
+        <button mat-stroked-button (click)="openDialog()">Log In</button>
+    </mat-grid-tile>
+  </mat-grid-list>
