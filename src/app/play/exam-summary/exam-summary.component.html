@@ -1,0 +1,9 @@
+<h3>You have answered<h3>
+<mat-list>
+  <mat-list-item *ngFor="let section of playService.exam.examSectionVoList">
+    <h3 matLine> {{section.questionCategoryVo.questionCategoryName}} </h3>
+    <p matLine> {{getTotalQuestionAnswered(section.randomMap)}} / {{section.randomMap.length}} </p>
+  </mat-list-item>
+</mat-list>
+<button type="button" mat-button  class="lg answered" (click)="complete()">FINISH</button>
+<button type="button" mat-button  class="lg  continue" (click)="continue()">CONTINUE</button>

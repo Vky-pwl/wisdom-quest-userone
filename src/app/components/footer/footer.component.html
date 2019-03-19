@@ -1,29 +1,98 @@
-<mat-grid-list cols="4" rowHeight="100px" gutterSize="0">
- <mat-grid-tile
+<mat-grid-list  gutterSize="0" [cols]="breakpoint" rowHeight="100px" (window:resize)="onResize($event)">
+            <mat-grid-tile
+                [colspan]="1"
+                [rowspan]="3"
+                >
+                <div class="wh100 bg-dark footer-column company-column">
+
+                    <div class="company">Wisdom Quest</div>
+                    <p> Wisdom Quest Learning Resources
+                        is an entity envisioned to make a
+                        difference in the education sector
+                        with a specific focus on offering quality 
+                        and professional education at an affordable price.
+                    </p>
+               </div>
+
+            </mat-grid-tile>
+
+
+        <mat-grid-tile
+        [colspan]="1"
+        [rowspan]="3"
+        >
+        <div class="wh100 bg-dark footer-column products-column">
+
+            <div class="products">Products</div>
+                 <p>
+                   ICAT
+                  </p>
+                  <p>
+                    GATE
+                  </p>
+                  <p>
+                    EMCAT
+                  </p>
+                  <p>
+                    MOCK GATE
+                  </p>
+       </div>
+
+    </mat-grid-tile>
+
+    
+
+    <mat-grid-tile
     [colspan]="1"
-    [rowspan]="2"
+    [rowspan]="3"
     >
-    <div class="wh100 bg-dark"></div>
+    <div class="wh100 bg-dark footer-column useful-links-column">
+
+        <div class="useful-links">Useful links</div>
+          <p>
+            <a href="http://www.wisdomquest.in/#about">About</a>
+          </p>
+          <p>
+            <a href="http://www.wisdomquest.in/#team">Team</a>
+          </p>
+          <p>
+            <a href="http://www.wisdomquest.in/#work">Services</a>
+          </p>
+          <p>
+            <a href="http://www.wisdomquest.in/#contact">Help</a>
+          </p>
+   </div>
 
 </mat-grid-tile>
-<mat-grid-tile
-[colspan]="1"
-[rowspan]="2"
->
-<div class="wh100 bg-dark"></div>
-</mat-grid-tile>
-<mat-grid-tile
+
+
+    <mat-grid-tile
     [colspan]="1"
-    [rowspan]="2"
+    [rowspan]="3"
     >
-    <div class="wh100 bg-dark"></div>
-  
-</mat-grid-tile>
-<mat-grid-tile
-[colspan]="1"
-[rowspan]="2">
+    <div class="wh100 bg-dark footer-column contact-column">
 
-<div class="wh100 bg-dark"></div>
+        <div class="contact">Contact</div>
+        <p>
+            <span>
+                    <mat-icon>home </mat-icon>
+            </span>
+                 Obulreddy Complex, Apsara Circle, Kadapa-516002</p>
+        <p>
+                <span>
+                        <mat-icon>mail </mat-icon>
+                </span> www.wisdomquest.in </p>
+        <p>
+                <span>
+                        <mat-icon>phone </mat-icon>
+                </span> + 91 779 935 1744</p>
+        <p>
+                <span>
+                        <mat-icon>phone </mat-icon>
+                </span> + 91 779 935 1744</p>
+   </div>
+
 </mat-grid-tile>
 
-  </mat-grid-list>
+
+</mat-grid-list>

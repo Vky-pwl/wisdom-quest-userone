@@ -1,3 +1,88 @@
-<p>
-  question works!
-</p>
+<div class="icat-question-container">
+  <mat-grid-list cols="4" rowHeight="45px" gutterSize="0" class="header">
+
+    <mat-grid-tile [colspan]="1" [rowspan]="1">
+      <div class="brand">
+        <!-- <img src="assets/images/logo.jpg" height="42" width="42"> -->
+      </div>
+
+
+    </mat-grid-tile>
+
+
+
+    <mat-grid-tile [colspan]="3" [rowspan]="1">
+      <div class="header-actions">
+        <strong>
+          <countdown [config]="config" (finished)="onFinished()"></countdown>
+        </strong>
+
+        <mat-list>
+          <mat-list-item>
+            <h3 matLine class="username">{{playService?.user?.firstName}}</h3>
+            <p matLine>
+              <span class="college-name">{{playService?.user?.collegeVo?.collegeName}}</span>
+
+            </p>
+          </mat-list-item>
+        </mat-list>
+        <i class="material-icons" matTooltip="Logout" (click)="logout()">
+          power_settings_new
+        </i>
+      </div>
+    </mat-grid-tile>
+  </mat-grid-list>
+
+  <nav mat-tab-nav-bar *ngIf="playService?.exam?.examCategoryVo?.examCategoryName === 'EMCET'">
+    <div mat-tab-link (click)="switchSection(section)" [ngClass]="{'active':this.playService.section.examSectionId === section.examSectionId}"
+      *ngFor="let section of playService?.exam?.examSectionVoList">{{section?.questionCategoryVo?.questionCategoryName}}</div>
+
+  </nav>
+
+  <div class="question-container" *ngIf="question">
+    <div class="main">
+    <div *ngIf="question.questionBankVo && question.questionBankVo.questionDescriptionVo">
+      <div [innerHtml]="question.questionBankVo?.questionDescriptionVo?.descriptionTextData | replace"></div>
+    </div>
+    <div>
+      <div class="d-flex flex-column">
+          <button mat-button class="qn" color="primary">{{question.questionNumber}}</button>
+      
+        <strong *ngIf="question.questionBankVo" [innerHtml]="question.questionBankVo.questionStatmentData | replace  "></strong>
+      </div>
+      <div *ngIf="question.questionBankVo" class="options-container">
+        <div class="option" *ngFor="let answer of question.questionBankVo.options | orderby; let i = index">
+
+          <strong class="m-5" >{{answer.optionName}} .</strong>
+          <input type="checkbox" id="{{i}}" class="cbx" [checked]="answer.checked" (change)="answer.checked = !answer.checked;answerChange(answer);"
+            #check style="display: none;">
+          <label for="{{i}}" class="check">
+            <svg width="18px" height="18px" viewBox="0 0 18 18">
+              <path d="M1,9 L1,3.5 C1,2 2,1 3.5,1 L14.5,1 C16,1 17,2 17,3.5 L17,14.5 C17,16 16,17 14.5,17 L3.5,17 C2,17 1,16 1,14.5 L1,9 Z"></path>
+              <polyline points="1 9 7 14 15 4"></polyline>
+            </svg>
+          </label>
+          <label for="{{i}}" class="m-5" [innerHtml]="answer.optionValueData | replace"></label>
+          
+        </div>
+      </div>
+
+    </div>
+<div class="actions">
+    <button type="submit"
+    *ngIf="playService.exam.examCategoryVo.examCategoryName !== 'EMCET'"
+     mat-button color="primary" class="bg-blue lg mr-2" (click)="submit()">Submit Answer</button>
+  
+     <button type="submit"
+     mat-button color="primary" 
+     *ngIf="playService.exam.examCategoryVo.examCategoryName === 'EMCET'"
+     class="bg-blue lg mr-2" (click)="next()">Save & Next</button>
+    <button type="button" mat-button  class="markedForReview lg mr-auto" (click)="markedForReview(question)">Mark For Review & Next</button>
+    <button type="button" mat-button  class="lg finish" (click)="showExamSummary()">FINISH</button>
+  </div>
+  </div>
+  <div class="side">
+    <app-question-tray></app-question-tray>
+  </div>
+  </div>
+  </div>

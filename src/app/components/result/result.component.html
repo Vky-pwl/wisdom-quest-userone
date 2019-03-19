@@ -1,0 +1,78 @@
+<div class="container col-sm-12" *ngIf="result">
+    <div class="row col-sm-12">
+      <!-- <div class="modal-title w-100 col-sm-12 d-flex justify-content-between align-items-center">
+        <span>{{title}}</span>
+      </div> -->
+      <div class="shadow-sm  col-sm-12 col-md-12 col-lg-12 card d-flex flex-column align-items-center">
+
+      <img  src="assets/images/logo.jpg" height="45" width="45" class="rounded m-3"/>
+      <h2>Wisdom Quest</h2>
+      <div class="col-sm-12">
+          <table class="table table-borderless">
+            
+              <tbody>
+                <tr>
+                  <td class="user d-flex align-items-center">
+                      <i class="material-icons">
+                          account_circle
+                        </i>
+                    {{result.candidateFirstName +' '+ result.candidateLastName}}</td>
+                  <td>{{result.examName}}</td>
+                </tr>
+                <tr>
+                  <td>{{result.certificateCode}}</td>
+                  <td>{{result.examCategoryName}}</td>
+                </tr>
+              
+              </tbody>
+            </table>
+            <table class="table table-bordered">
+                <thead class="bg-primary text-white">
+                    <th scope="col">Section Name</th>
+                    <th scope="col">Marks Obtained</th>
+                    <th scope="col">Total Marks</th>
+                    <th scope="col">Grade</th>
+                    <th scope="col">Percentile</th>
+                  
+                </thead>
+                <tbody>
+                  <ng-template ngFor let-section [ngForOf]="result?.sectionResultList">
+                  <tr>
+                    <th>{{section.examSectionName}}</th>
+                    <th>{{section.userTotalMarks}}</th>
+                    <th>{{section.totalMarks}}</th>
+                    <th>{{section.grade}}</th>
+                    <th>{{section.percentile}}</th>
+                   
+                  </tr>
+                
+                </ng-template>
+                </tbody>
+              </table>
+
+              <table class="table table-bordered" *ngIf="eai.length">
+                <thead class="bg-primary text-white">
+                  
+                    <th>Designation</th>
+                    <th>Level &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</th>
+                    <th>Job Eligibility</th>
+                  
+                  
+                </thead>
+                <tbody>
+                  
+                  <tr *ngFor="let e of eai">
+                    <td>{{e.designation}}</td>
+                    <td>{{e.level}}</td>
+                    <td>{{e.jobEligibility}}</td>
+                  </tr>
+                </tbody>
+              </table>
+       
+      </div>
+      </div>
+    </div>
+  </div>
+  <div *ngIf="!result">
+You Don't have permission to view result
+  </div>

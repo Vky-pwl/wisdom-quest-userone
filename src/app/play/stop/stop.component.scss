@@ -1,0 +1,17 @@
+.stop-container{
+    font-family: cursive;
+    flex-direction: column;
+    max-width: 80vw;
+    margin:auto;
+    box-sizing: border-box;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: url(../../../assets/images/standing-4.png),
+    url(../../../assets/images/sitting-5@2x.png);
+    background-size: 25%, 25%;
+    background-repeat: no-repeat;
+    background-position: left, right;
+    min-height: 100vh;
+
+}

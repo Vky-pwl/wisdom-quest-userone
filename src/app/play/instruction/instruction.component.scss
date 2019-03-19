@@ -1,0 +1,60 @@
+.instruction-container{
+    flex-direction: column;
+    max-width: 80vw;
+    margin:auto;
+    box-sizing: border-box;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    background: #ffffff;
+    min-height: 100vh;
+    padding: 12px;
+    border: 1px solid #ddd;
+   
+    .instruction{
+        margin-bottom: 25px;
+        margin-top: 25px;
+    }
+
+    .caps{
+        text-transform: capitalize;
+    }
+    .header{
+        align-self: flex-start;
+        width: 100%;
+    }
+    .brand{
+        width:100%;
+        height: 100%;
+        display: flex;
+        justify-content: start;
+        align-items: center;
+        padding-left: 15px;
+    }
+    
+    .header-actions{
+        width:100%;
+        height: 100%;
+        display: flex;
+        justify-content: flex-end;
+        align-items: center;
+        padding-right: 15px;
+        cursor: pointer;
+    }
+    .header-middle{
+        width:100%;
+        height: 100%;
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+        padding-left: 15px;
+    }
+    
+    .username{
+        text-transform: capitalize;
+    }
+    .college-name{
+        opacity: 0.8;
+    }
+
+}

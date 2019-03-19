@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { AuthenticationService } from '../authentication.service';
+import { PlayService } from './play.service';
 
 @Component({
   selector: 'app-play',
@@ -7,9 +9,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class PlayComponent implements OnInit {
 
-  constructor() { }
+  constructor(private authenticationService: AuthenticationService,
+    private playService: PlayService
+    ) {
+    this.authenticationService.isExamInProgress = true;
+   }
 
   ngOnInit() {
+   this.playService.configure();
   }
 
 }

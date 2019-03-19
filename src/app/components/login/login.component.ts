@@ -1,5 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { AuthenticationService } from 'src/app/authentication.service';
+import { MatSnackBar, MatDialog, MatDialogRef } from '@angular/material';
+import { ExamViewComponent } from '../exam-view/exam-view.component';
+import { PlayService } from 'src/app/play/play.service';
 
 @Component({
   selector: 'app-login',
@@ -7,25 +11,60 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
   styleUrls: ['./login.component.scss']
 })
 export class LoginComponent implements OnInit {
-  signUpForm: FormGroup;
+  loginForm: FormGroup;
   submitted = false;
+  loading = false;
 
-  constructor(private formBuilder: FormBuilder) { }
+    // @Inject(MAT_DIALOG_DATA) public data: DialogData
+  constructor(
+    public dialogRef: MatDialogRef<LoginComponent>,
+    private snackBar: MatSnackBar,
+    private playService: PlayService,
+     public dialog: MatDialog,
+     private formBuilder: FormBuilder,
+             private authenticationService: AuthenticationService) {
+             }
+
 
   ngOnInit() {
-    this.signUpForm = this.formBuilder.group({
-      contactEmail: ['', [Validators.required, Validators.email]],
-      password: ['', [Validators.required, Validators.minLength(6)]],
-  });
+    this.loginForm = this.formBuilder.group({
+      username: ['', Validators.required],
+      password: ['', Validators.required]
+    });
+  }
+
+  get f() {
+    return this.loginForm.controls;
   }
 
   onSubmit() {
     this.submitted = true;
-
     // stop here if form is invalid
-    if (this.signUpForm.invalid) {
-        return;
+    if (this.loginForm.invalid) {
+      return;
     }
+    this.loading = true;
+    this.authenticationService.login(this.f.username.value, this.f.password.value)
+      .pipe()
+      .subscribe(
+        (response) => {
+          this.loading = false;
+          if (response['status'] === 'success') {
+            this.playService.openDialog();
+            this.loginForm.reset();
+          } else {
+            let msg = response['message'] ;
+            if (response['object'] && response['object']['error']) {
+             msg =  response['object']['error'];
+            } else {
+             msg =  'Unable to process request';
+            }
+           this.snackBar.open(msg, '', {
+             duration: 1000,
+             horizontalPosition: 'right'
+           });
+          }
+        });
+  }
 
-}
 }

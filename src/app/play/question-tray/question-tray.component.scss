@@ -1,0 +1,28 @@
+.question-list{
+   
+    height: 200px;
+    overflow: auto;
+  
+
+    button{
+        margin: 5px;
+    }
+    .count{
+        margin-right: 5px; 
+    }
+    .not-visited{
+        background: #9e9e9e;
+    }
+    .visited{
+        background: #03a9f4;
+    }
+    .answered{
+        background: #8BC34A;
+    }
+    .markedForReview{
+        background: #9c27b0;
+    }
+    .answeredAndMarkedForReview{
+        background: #FFC107;
+    }
+}

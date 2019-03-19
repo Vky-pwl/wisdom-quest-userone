@@ -1,0 +1,22 @@
+.start-container{
+    font-family: cursive;
+    flex-direction: column;
+    max-width: 80vw;
+    margin:auto;
+    box-sizing: border-box;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: url(../../../assets/images/standing-19@2x.png),
+    url(../../../assets/images/sitting-2.png),
+    url(../../../assets/images/plants.png);
+    background-size: 25%, 25%,150%;
+    background-repeat: no-repeat;
+    background-position: left, right, center;
+    min-height: 100vh;
+
+    .caps{
+        text-transform: capitalize;
+    }
+
+}

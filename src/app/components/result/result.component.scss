@@ -1,0 +1,45 @@
+:host{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+    border-collapse: collapse;
+
+    .col-sm-12{
+        width: 100%;
+    }
+
+    table{
+        width: 100%;
+    }
+    
+    .table-borderless{
+        td,th {
+            border: none !important;
+            padding: 16px;
+          }
+          tr:hover {background-color: transparent !important;}
+          tr:nth-child(even){background-color: transparent !important;}
+
+    }
+      
+      td,th {
+        border: 1px solid #333;
+        padding: 8px;
+      }
+      
+      
+      tr:hover {background-color: #CDDC39;}
+      
+      th {
+        padding-top: 12px;
+        padding-bottom: 12px;
+        text-align: left;
+      }
+
+      .user{
+          text-transform: capitalize;
+          font-weight: bolder;
+          font-size: larger;
+      }
+}

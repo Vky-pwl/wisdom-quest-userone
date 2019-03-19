@@ -1,19 +1,20 @@
 ﻿import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { map } from 'rxjs/operators';
-import { GlobalVariable } from '../app-setting.ts/path-config';
 import { Router } from '@angular/router';
-import { WqCommonService } from 'src/app/shared/services/wq-common.service';
-import { ConductorService } from 'src/app/conductor/services/conductor.service';
+import { GlobalVariable } from './path-config';
+
 
 @Injectable()
 export class AuthenticationService {
-    public currentEndUser = {};
+    public currentEndUser: any;
     public isExamInProgress = false;
     constructor(private http: HttpClient,
-                private wqCommonService: WqCommonService,
                 private router: Router) {
+
                  this.currentEndUser = JSON.parse(localStorage.getItem('currentEndUser')) || {} ;
+
+
                 }
 
     login(username: string, password: string) {
@@ -22,13 +23,13 @@ export class AuthenticationService {
                 if (response['status'] === 'success') {
                     if (response['object'] && response['object']['token']) {
                         localStorage.setItem('currentEndUser', JSON.stringify(response['object']));
+                        this.currentEndUser = JSON.parse(localStorage.getItem('currentEndUser')) || {} ;
                         this.currentEndUser = response['object'];
-                        return 'login success';
+                        return response;
                     }
                 } else {
-                    this.toaster.error(response['message']);
                 }
-                return 'login fail';
+                return response;
             },
             err => {
             }
@@ -40,13 +41,28 @@ export class AuthenticationService {
             .pipe(map(response => {
                 if (response['status'] === 'success') {
                     if (response['object']) {
-                        this.wqCommonService.start(response['object']['tinyKey'], response['object']['examId']);
-                        return 'login success';
+                        this.openConductor(response['object']['tinyKey']);
+                        return response;
                     }
                 } else {
-                    this.toaster.error(response['message']);
                 }
-                return 'login fail';
+                return response;
+            },
+            err => {
+            }
+            ));
+    }
+    signupLicense(license) {
+        return this.http.get<any>(`${GlobalVariable.BASE_API_URL}candidate-exam/attach/${license}`)
+            .pipe(map(response => {
+                if (response['status'] === 'success') {
+                    if (response['object']) {
+                        this.openConductor(response['object']['tinyKey']);
+                        return response;
+                    }
+                } else {
+                }
+                return response;
             },
             err => {
             }
@@ -55,16 +71,13 @@ export class AuthenticationService {
 
     logout() {
         localStorage.removeItem('currentEndUser');
-        this.router.navigate(['auth/landing']);
-        if (this.isExamInProgress) {
-            const status = {};
-              this.conductorService.updateLogout(status);
-        }
-        // this.router.navigate(['auth/signup']);
+        localStorage.removeItem('isLoggedIn');
+        this.router.navigate(['/landing']);
+        this.isExamInProgress = false;
     }
 
     openConductor(tinyKey) {
-        const url = `${location.origin}/${location.pathname}/#/exam-conductor/?link=${tinyKey}`;
+        const url = `${location.origin}/${location.pathname}/#/play/?link=${tinyKey}`;
             const width = Math.max(window.innerWidth,
                          document.documentElement.clientWidth,
                          document.body.clientWidth);

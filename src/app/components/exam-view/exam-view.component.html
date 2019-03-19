@@ -1,0 +1,109 @@
+
+<mat-grid-list 
+cols="4"
+rowHeight="45px"
+gutterSize="0"
+class="border-bottom">
+
+<mat-grid-tile
+                [colspan]="2"
+                [rowspan]="1">
+              
+                
+
+</mat-grid-tile>
+
+
+
+<mat-grid-tile
+                [colspan]="2"
+                [rowspan]="1"
+                >
+                <div class="header-actions">
+                    <mat-list>
+                        <mat-list-item>
+                          <h3 matLine class="username">{{authenticationService?.currentEndUser?.firstName}}</h3>
+                          <p matLine>
+                            <span class="college-name">{{authenticationService?.currentEndUser?.collegeVo?.collegeName}}</span>
+                          
+                          </p>
+                        </mat-list-item>
+                      </mat-list>
+                <i class="material-icons" matTooltip="Logout" (click)="logout()">
+                    power_settings_new
+                </i>
+              </div>
+</mat-grid-tile>
+</mat-grid-list>
+<mat-grid-list 
+cols="4"
+rowHeight="75px"
+gutterSize="0"
+class="border-bottom">
+
+<mat-grid-tile
+                [colspan]="2"
+                [rowspan]="1">
+                <div class="brand d-flex justify-content-center align-items-center">
+                    <!-- <img src="assets/images/logo.jpg" height="42" width="42"> -->
+                    <form [formGroup]="licenseForm" (ngSubmit)="onSubmit()"> 
+                    <mat-form-field appearance="outline" class="pb-0 mr-2">
+                      <mat-label>License</mat-label>
+                      <input  type="password" formControlName="license" matInput>
+                      <mat-hint>Enter lincense code here to start new exam</mat-hint>
+                  </mat-form-field>
+                  <button type="submit" [disabled]="goLoading" class="bg-blue  mb-18" mat-stroked-button >GO</button>
+                </form>
+                </div>
+                
+
+</mat-grid-tile>
+
+
+
+
+</mat-grid-list>
+
+<div class="exam-list-container">
+    <mat-card *ngFor="let exam of examList" class="exam-card" color="primary">
+        <mat-card-header>
+          <div mat-card-avatar class="exam-img">{{exam.examName.substr(0,1)}}</div>
+          <mat-card-title>{{exam.examName}}</mat-card-title>
+          <mat-card-subtitle>{{exam.examCategoryVo?.examSubCategoryName}}</mat-card-subtitle>
+        </mat-card-header>
+        <img mat-card-image>
+        <mat-card-content>
+          <p [innerHtml]="exam.examDescription">
+          
+          </p>
+        </mat-card-content>
+        <mat-card-actions>
+          <button mat-fab  (click)="start(exam.tinyKey,exam.examId)"
+          *ngIf="!(exam.examStatus === 'PRISTINE' || exam.examStatus === 'COMPLETED')">
+          <i class="material-icons"  matTooltip="Resume" >
+              replay
+              </i>
+        </button>
+          <button mat-fab (click)="start(exam.tinyKey,exam.examId)"
+          *ngIf="exam.examStatus === 'PRISTINE'" 
+          >
+        
+          <i class="material-icons" matTooltip="Start" >
+              play_arrow
+              </i>
+
+            
+        </button>
+         
+        
+          <i class="material-icons" matTooltip="Result" (click)="result(exam.examId)"
+          *ngIf="exam.examStatus === 'COMPLETED'">
+            insert_chart
+              </i>
+
+             
+      
+        </mat-card-actions>
+      </mat-card>
+
+</div>

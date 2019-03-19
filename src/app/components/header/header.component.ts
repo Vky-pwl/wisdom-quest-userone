@@ -11,7 +11,6 @@ export class HeaderComponent implements OnInit {
 
   constructor(private snackBar: MatSnackBar, public dialog: MatDialog) { }
 
-  
   openDialog(): void {
     const dialogRef = this.dialog.open(LoginComponent, {
       width: '400px'

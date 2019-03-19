@@ -1,0 +1,54 @@
+.footer-column{
+    padding: 15px;
+    box-sizing: border-box;
+
+    .company{
+        font-weight: 600;
+        font-size: 16px;
+       
+
+    }
+
+   
+    
+}
+
+.company-column{
+    p {
+        line-height: 2em;
+    }
+
+}
+
+.products-column,.useful-links-column{
+    p{
+        cursor: pointer;
+        a{
+            color: #fff !important;
+        }
+    }
+.products,.useful-links{
+    font-weight: 600;
+    font-size: 16px;
+
+}
+}
+
+.contact-column{
+    p{
+        display: flex;
+        cursor: pointer;
+        align-items: center;
+        
+    }
+    span{
+        margin: 5px;
+    }
+.contact{
+    font-weight: 600;
+    font-size: 16px;
+   
+
+}
+
+}

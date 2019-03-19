@@ -6,10 +6,14 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./footer.component.scss']
 })
 export class FooterComponent implements OnInit {
-
-  constructor() { }
+  breakpoint;
 
   ngOnInit() {
-  }
+    this.breakpoint = (window.innerWidth <= 400) ? 1 : 4;
+}
+
+onResize(event) {
+  this.breakpoint = (event.target.innerWidth <= 400) ? 1 : 4;
+}
 
 }

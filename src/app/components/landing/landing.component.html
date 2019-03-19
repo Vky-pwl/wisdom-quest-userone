@@ -13,10 +13,26 @@
               </mat-card-header>
    <form [formGroup]="signUpForm" (ngSubmit)="onSubmit()">
               <mat-card-content class="d-flex flex-column">
-                   <mat-form-field appearance="outline">
-                      <mat-label>Name</mat-label>
+               <mat-form-field appearance="outline">
+                      <mat-label>First Name</mat-label>
                       <input  formControlName="firstName" matInput>
-                    </mat-form-field>
+               </mat-form-field>
+
+               <mat-form-field appearance="outline">
+                  <mat-label>Last Name</mat-label>
+                  <input  formControlName="lastName" matInput>
+           </mat-form-field>
+
+
+               <mat-radio-group class="mat-form-field-wrapper" formControlName="gender">
+                  <mat-radio-button  [value]="'MALE'">
+                    MALE &nbsp; 
+                  </mat-radio-button>
+                  <mat-radio-button [value]="'FEMALE'">
+                      FEMALE
+                    </mat-radio-button>
+                </mat-radio-group>
+
 
                      
 
@@ -32,7 +48,7 @@
 
                           <mat-form-field appearance="outline">
                               <mat-label>Password</mat-label>
-                              <input  type="password" formControlName="contactNumber" matInput>
+                              <input  type="password" formControlName="password" matInput>
                             </mat-form-field>
 
                             <mat-form-field appearance="outline">
@@ -43,8 +59,8 @@
               </mat-card-content>
 
               <mat-card-actions>
-                <button type="submit" mat-button >Proceed</button>
-                <button type="reset" mat-button color="warn">Clear</button>
+                <button type="reset" mat-button color="warn" class="bg-red" >Clear</button>
+                <button type="submit"mat-button color="primary" class="bg-blue">Proceed</button>
               </mat-card-actions>
    </form>        
             </mat-card>

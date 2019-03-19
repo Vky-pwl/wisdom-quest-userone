@@ -1,0 +1,40 @@
+<mat-list>
+
+    <mat-list-item>
+      <button mat-button class="count" color="primary">{{getNotVisitedCount()}}</button>
+      Not Visited </mat-list-item>
+  
+    <mat-list-item>
+      <button mat-button class="count" color="primary">{{getVisitedCount()}}</button>
+      Visited </mat-list-item>
+    <mat-list-item>
+      <button mat-button class="count" color="primary">{{getMarkForReviewCount()}}</button>
+      Marked for review </mat-list-item>
+    <mat-list-item>
+      <button mat-button class="count" color="primary">{{getAnsweredAndMarkForReviewCount()}}</button>
+      Answered & Marked for review</mat-list-item>
+    <mat-list-item>
+      <button mat-button class="count" color="primary">{{getAnsweredCount()}}</button>
+      Answered </mat-list-item>
+  
+  
+  </mat-list>
+  
+  <mat-nav-list>
+    <div class="question-list" #tray appTrackScroll >
+  
+      <button (click)="getMcatQuestion(question)"
+      [ngClass]="{'markedForReview':question.markedForReview,
+        'not-visited': !question.visited,
+        'visited':question.visited,
+        'answered':question.answered,
+      'answeredAndMarkedForReview': (question.answered && question.markedForReview)}"
+      mat-fab color="primary" *ngFor="let question of playService.section.randomMap; let i = index;">{{i
+        + 1 }}</button>
+  
+  
+  
+  
+    </div>
+  </mat-nav-list>
+  

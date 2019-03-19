@@ -1,0 +1,76 @@
+.exam-list-container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top:22px;
+    .exam-card{
+     margin: 5px; 
+    }
+
+    .exam-img{
+        background: #F44336;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        color: #fff;
+        text-transform: uppercase;
+    }
+
+    background: url(../../../assets/images/Home.png),
+    url(../../../assets/images/sitting-4@2x.png);
+    background-size: cover, 6em, 6em;
+    background-repeat: no-repeat;
+    background-position: top right, top right;
+
+
+
+   
+}
+
+.brand{
+    width:100%;
+    height: 100%;
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    padding-left: 15px;
+
+    .pb-0{
+        padding-bottom:0px; 
+    }
+    .mr-2{
+        margin-right: 5px;
+    }
+    .mb-18{
+        margin-bottom: 18px;
+    }
+}
+
+.header-actions{
+    width:100%;
+    height: 100%;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    padding-right: 15px;
+    cursor: pointer;
+}
+.header-middle{
+    width:100%;
+    height: 100%;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    padding-left: 15px;
+}
+
+.username{
+    text-transform: capitalize;
+}
+.college-name{
+    opacity: 0.8;
+}
+
+// .border-bottom{
+//     box-shadow: 0px 1px 0px 0px #ddd;
+// }

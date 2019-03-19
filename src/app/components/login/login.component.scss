@@ -1,0 +1,11 @@
+.login-form,.login-content,.login-header,.login-title{
+    display: flex !important;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    box-shadow: none;
+
+    .logo{
+        margin: 10px;
+    }
+}

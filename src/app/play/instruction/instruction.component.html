@@ -1,3 +1,43 @@
-<p>
-  instruction works!
-</p>
+<div class="instruction-container">
+    <mat-grid-list 
+    cols="4"
+    rowHeight="45px"
+    gutterSize="0"
+    class="header">
+    
+    <mat-grid-tile
+                    [colspan]="1"
+                    [rowspan]="1">
+                    <div class="brand">
+                        <!-- <img src="assets/images/logo.jpg" height="42" width="42"> -->
+                    </div>
+                    
+    
+    </mat-grid-tile>
+    
+    
+    
+    <mat-grid-tile
+                    [colspan]="3"
+                    [rowspan]="1"
+                    >
+                    <div class="header-actions">
+                        <mat-list>
+                            <mat-list-item>
+                              <h3 matLine class="username">{{playService?.user?.firstName}}</h3>
+                              <p matLine>
+                                <span class="college-name">{{playService?.user?.collegeVo?.collegeName}}</span>
+                              
+                              </p>
+                            </mat-list-item>
+                          </mat-list>
+                    <i class="material-icons" matTooltip="Logout" (click)="logout()">
+                        power_settings_new
+                    </i>
+                  </div>
+    </mat-grid-tile>
+    </mat-grid-list>
+    <div class="instruction" *ngIf="playService.isExamInstruction && playService.exam" [innerHtml]="playService.exam.examInstructionsData | replace"></div>
+    <div class="instruction" *ngIf=" playService.section && !playService.isExamInstruction" [innerHtml]="playService.section.examSectionInstructionsData | replace"></div>
+    <button type="submit"mat-button color="primary" class="bg-blue lg" (click)="start()">Enter</button>
+</div>
