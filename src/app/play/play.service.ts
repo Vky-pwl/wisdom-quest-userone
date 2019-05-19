@@ -338,7 +338,6 @@ err => {
     }
     submitMcat(optionName) {
       let req;
-      debugger;
       if (optionName) {
          req = {
           examId: this.status.currentExamId,
@@ -355,7 +354,6 @@ err => {
                   q.userAnswer = optionName;
             }
           });
-          debugger;
       } else {
         req = {
           examId: this.status.currentExamId,
@@ -375,7 +373,6 @@ err => {
           });
 
       }
-debugger;
       this.http.post<any>(`${GlobalVariable.BASE_API_URL}candidate-exam/submit-answer`, req)
       .pipe( map(response => {
          return response;

@@ -4,6 +4,7 @@ import { MatDialogRef, MatDialog, MatSnackBar } from '@angular/material';
 import { AuthenticationService } from 'src/app/authentication.service';
 import { ResultComponent } from '../result/result.component';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { CertificateComponent } from '../certificate/certificate.component';
 
 @Component({
   selector: 'app-exam-view',
@@ -47,6 +48,15 @@ export class ExamViewComponent implements OnInit {
   result(examId): void {
     const dialogRef = this.dialog.open(ResultComponent, {
       width: '60%',
+      data: {examId: examId, cadidateId: JSON.parse(localStorage.getItem('currentEndUser')).userId}
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log('The dialog was closed');
+    });
+  }
+  certificate(examId): void {
+    const dialogRef = this.dialog.open(CertificateComponent, {
       data: {examId: examId, cadidateId: JSON.parse(localStorage.getItem('currentEndUser')).userId}
     });
 

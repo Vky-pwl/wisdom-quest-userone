@@ -100,6 +100,10 @@ class="border-bottom">
           *ngIf="exam.examStatus === 'COMPLETED'">
             insert_chart
               </i>
+          <i class="material-icons" matTooltip="Certificate" (click)="certificate(exam.examId)"
+          *ngIf="exam.examStatus === 'COMPLETED'">
+          receipt
+              </i>
 
              
       

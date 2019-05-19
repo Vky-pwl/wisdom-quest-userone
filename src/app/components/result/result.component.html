@@ -45,12 +45,43 @@
                     <th>{{section.percentile}}</th>
                    
                   </tr>
+                   <tr *ngIf="result?.examCategoryName.includes('ICAT')">
+                    <td colspan="5">
+                    <table class="table table-bordered ">
+                        <thead class="bg-white text-dark">
+                            <tr>
+                              <td scope="col">Sub Section</td>
+                              <td scope="col">Marks Obtain</td>
+                              <td scope="col">Attempt</td>
+                              <td>Correct</td>
+                            </tr>
+                          </thead>
+                
+                      <tbody>
+                        <ng-template ngFor let-sub [ngForOf]="Object.values(section?.questionCategoryVoList)">
+                        <tr>
+                          <td>{{sub.questionSubCategoryName}}</td>
+                          <td>{{sub.userTotalMarks}}</td>
+                          <td>{{sub.totalAttempt}}</td>
+                          <td colspan="3">{{sub.totalCorrectAnswer}}</td>
+                         
+                        </tr>
+                        <tr>
+      
+                          
+                        </tr>
+                      </ng-template>
+                      </tbody>
+                    </table>
+                    </td>
+
+                  </tr> 
                 
                 </ng-template>
                 </tbody>
               </table>
 
-              <table class="table table-bordered" *ngIf="eai.length">
+              <table class="table table-bordered" *ngIf="eai?.length">
                 <thead class="bg-primary text-white">
                   
                     <th>Designation</th>

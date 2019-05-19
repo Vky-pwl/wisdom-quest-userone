@@ -12,4 +12,7 @@ export class StopComponent implements OnInit {
   ngOnInit() {
   }
 
+  close() {
+    window.close();
+  }
 }

@@ -18,6 +18,7 @@ import { ExamViewComponent } from './components/exam-view/exam-view.component';
 import { CoreService } from './core.service';
 import { PlayModule } from './play/play.module';
 import { ResultComponent } from './components/result/result.component';
+import { CertificateComponent } from './components/certificate/certificate.component';
 
 @NgModule({
   declarations: [
@@ -27,7 +28,8 @@ import { ResultComponent } from './components/result/result.component';
     HeaderComponent,
     FooterComponent,
     ExamViewComponent,
-    ResultComponent
+    ResultComponent,
+    CertificateComponent
   ],
   imports: [
     BrowserModule,
@@ -44,6 +46,6 @@ import { ResultComponent } from './components/result/result.component';
     { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },
   ],
   bootstrap: [AppComponent],
-  entryComponents: [LoginComponent, ExamViewComponent, ResultComponent]
+  entryComponents: [LoginComponent, ExamViewComponent, ResultComponent, CertificateComponent]
 })
 export class AppModule { }

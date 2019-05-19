@@ -62,7 +62,7 @@ export class QuestionComponent implements OnInit, AfterViewInit, OnDestroy {
 
     if (this.playService.exam.examCategoryVo.examCategoryName !== 'EMCET') {
 
-      if (this.playService.status.currentSectionStatus === 'INPROGRSS' && this.playService.status.currentSectionRemaingTime === 0) {
+      if (this.playService.status.currentSectionStatus === 'INPROGRESS' && this.playService.status.currentSectionRemaingTime === 0) {
         const status = {
           currentSectionRemaingTime: 0,
           currentSectionStatus: 'COMPLETED'
@@ -72,7 +72,7 @@ export class QuestionComponent implements OnInit, AfterViewInit, OnDestroy {
       }
 
     } else {
-      if (this.playService.status.currentExamStatus === 'INPROGRSS' && this.playService.status.examRemaingTime  === 0) {
+      if (this.playService.status.currentExamStatus === 'INPROGRESS' && this.playService.status.examRemaingTime  === 0) {
         const status = {
           examRemaingTime: 0,
           currentExamStatus: 'COMPLETED',

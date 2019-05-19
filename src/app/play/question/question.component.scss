@@ -16,6 +16,10 @@
     flex-direction: column;
    }
 
+   .full{
+    width: 100% !important; 
+   }
+
    .main{
        display: inline-block;
        width: calc(100% - 250px);
