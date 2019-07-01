@@ -27,6 +27,7 @@ export interface Status {
   currentQuestionStatus?: string;
   currentSectionRemaingTime?: number;
   examRemaingTime?: number;
+  testConductorHasTestCodeId?: number;
 }
 
 @Injectable()
@@ -66,6 +67,7 @@ export class PlayService {
     this.selectedQuestion = this.section.randomMap.filter((q) => {
       return this.status.currentQuestionId === q.examSectionHasQuestionId;
     })[0];
+    this.selectedQuestion.testConductorHasTestCodeId = this.status.testConductorHasTestCodeId;
     this.http.post<any>(`${GlobalVariable.BASE_API_URL}candidate-exam/question-status-update`, this.selectedQuestion)
  .pipe( map(response => {
      if (response['status'] === 'success') {
@@ -241,7 +243,8 @@ err => {
       const req = {
         examId: this.status.currentExamId,
         examRemainingTime: this.status.examRemaingTime,
-        sectionRemainingTime: this.status.currentSectionRemaingTime
+        sectionRemainingTime: this.status.currentSectionRemaingTime,
+        testConductorHasTestCodeId: this.status.testConductorHasTestCodeId
         };
       this.http.post<any>(`${GlobalVariable.BASE_API_URL}candidate-exam/get-question`, req)
 .pipe( map(response => {
@@ -266,7 +269,8 @@ err => {
         examSectionHasQuestionId: questionId,
         examId: this.status.currentExamId,
         examRemainingTime: this.status.examRemaingTime,
-        sectionRemainingTime: this.status.currentSectionRemaingTime
+        sectionRemainingTime: this.status.currentSectionRemaingTime,
+        testConductorHasTestCodeId: this.status.testConductorHasTestCodeId
         };
       this.http.post<any>(`${GlobalVariable.BASE_API_URL}candidate-exam/get-question-question-id`, req)
 .pipe( map(response => {
@@ -310,6 +314,7 @@ err => {
         remainingTime: this.status.examRemaingTime,
         sectionRemainingTime: this.status.currentSectionRemaingTime,
         examSectionHasQuestionId: this.status.currentQuestionId,
+        testConductorHasTestCodeId: this.status.testConductorHasTestCodeId,
         userAnswer: optionName,
         active: true,
         sicoFlag: false
@@ -344,6 +349,7 @@ err => {
           remainingTime: this.status.examRemaingTime,
           sectionRemainingTime: this.status.currentSectionRemaingTime,
           examSectionHasQuestionId: this.status.currentQuestionId,
+          testConductorHasTestCodeId: this.status.testConductorHasTestCodeId,
           userAnswer: optionName,
           active: true,
           sicoFlag: false,

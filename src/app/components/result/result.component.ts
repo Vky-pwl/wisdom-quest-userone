@@ -29,7 +29,8 @@ export class ResultComponent implements OnInit {
     this.title = 'Result of Exam';
     const req = {
       examId: this.data.examId,
-      candidateId: this.data.candidateId
+      candidateId: this.data.candidateId,
+      testConductorHasTestCodeId: this.data.testConductorHasTestCodeId
     };
     this.http.post<any>(`${GlobalVariable.BASE_API_URL}exam/result-by-examId`, req)
         .pipe( map(response => {

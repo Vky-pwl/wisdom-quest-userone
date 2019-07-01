@@ -1,8 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Inject } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { map, catchError, subscribeOn } from 'rxjs/operators';
 import { of } from 'rxjs';
 import { GlobalVariable } from 'src/app/path-config';
+import { MatDialogRef, MatSnackBar, MatDialog, MAT_DIALOG_DATA } from '@angular/material';
 
 @Component({
   selector: 'app-certificate',
@@ -13,13 +14,16 @@ export class CertificateComponent implements OnInit {
   examId;
   candidateId;
   certificate;
-  constructor(private http: HttpClient) {
+  testConductorHasTestCodeId;
+  constructor(private http: HttpClient, public dialogRef: MatDialogRef<CertificateComponent>,
+     public dialog: MatDialog, @Inject(MAT_DIALOG_DATA) public data: any) {
    }
 
   ngOnInit() {
     const req = {
-      examId: this.examId,
-      candidateId: this.candidateId
+      examId: this.data.examId,
+      candidateId: this.data.candidateId,
+      testConductorHasTestCodeId: this.data.testConductorHasTestCodeId
     };
     this.http.post<any>(`${GlobalVariable.BASE_API_URL}exam/get-certificate`, req)
         .pipe( map(response => {

@@ -45,19 +45,23 @@ export class ExamViewComponent implements OnInit {
   }
 
 
-  result(examId): void {
+  result(exam): void {
     const dialogRef = this.dialog.open(ResultComponent, {
       width: '60%',
-      data: {examId: examId, cadidateId: JSON.parse(localStorage.getItem('currentEndUser')).userId}
+      data: {examId: exam.examId,
+              cadidateId: JSON.parse(localStorage.getItem('currentEndUser')).userId,
+              testConductorHasTestCodeId: exam.testConductorHasTestCodeId}
     });
 
     dialogRef.afterClosed().subscribe(result => {
       console.log('The dialog was closed');
     });
   }
-  certificate(examId): void {
+  certificate(exam): void {
     const dialogRef = this.dialog.open(CertificateComponent, {
-      data: {examId: examId, cadidateId: JSON.parse(localStorage.getItem('currentEndUser')).userId}
+        data: {examId: exam.examId,
+        candidateId: JSON.parse(localStorage.getItem('currentEndUser')).userId,
+        testConductorHasTestCodeId: exam.testConductorHasTestCodeId}
     });
 
     dialogRef.afterClosed().subscribe(result => {

@@ -71,12 +71,12 @@
 <div class="actions">
     <button type="submit"
     *ngIf="playService.exam.examCategoryVo.examCategoryName !== 'EMCET'"
-     mat-button color="primary" class="bg-blue lg mr-2" (click)="submit()">Submit</button>
+     mat-button color="primary" class="bg-grey lg mr-2" (click)="submit()">Submit</button>
   
      <button type="submit"
      mat-button color="primary" 
      *ngIf="playService.exam.examCategoryVo.examCategoryName === 'EMCET'"
-     class="bg-blue lg mr-2" (click)="next()">Save & Next</button>
+     class="bg-grey lg mr-2" (click)="next()">Save & Next</button>
     <button type="button" mat-button 
     *ngIf="playService.exam.examCategoryVo.examCategoryName === 'EMCET'"
     class="markedForReview lg mr-auto" (click)="markedForReview(question)">Mark For Review & Next</button>

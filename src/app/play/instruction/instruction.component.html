@@ -39,5 +39,5 @@
     </mat-grid-list>
     <div class="instruction" *ngIf="playService.isExamInstruction && playService.exam" [innerHtml]="playService.exam.examInstructionsData | replace"></div>
     <div class="instruction" *ngIf=" playService.section && !playService.isExamInstruction" [innerHtml]="playService.section.examSectionInstructionsData | replace"></div>
-    <button type="submit"mat-button color="primary" class="bg-blue lg" (click)="start()">Enter</button>
+    <button type="submit"mat-button color="primary" class="bg-grey lg" (click)="start()">Enter</button>
 </div>

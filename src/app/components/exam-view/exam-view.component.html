@@ -52,7 +52,7 @@ class="border-bottom">
                       <input  type="password" formControlName="license" matInput>
                       <mat-hint>Enter lincense code here to start new exam</mat-hint>
                   </mat-form-field>
-                  <button type="submit" [disabled]="goLoading" class="bg-blue  mb-18" mat-stroked-button >GO</button>
+                  <button type="submit" [disabled]="goLoading" class="bg-grey  mb-18" mat-stroked-button >GO</button>
                 </form>
                 </div>
                 
@@ -96,11 +96,11 @@ class="border-bottom">
         </button>
          
         
-          <i class="material-icons" matTooltip="Result" (click)="result(exam.examId)"
+          <i class="material-icons" matTooltip="Result" (click)="result(exam)"
           *ngIf="exam.examStatus === 'COMPLETED'">
             insert_chart
               </i>
-          <i class="material-icons" matTooltip="Certificate" (click)="certificate(exam.examId)"
+          <i class="material-icons" matTooltip="Certificate" (click)="certificate(exam)"
           *ngIf="exam.examStatus === 'COMPLETED'">
           receipt
               </i>
