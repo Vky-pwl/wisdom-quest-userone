@@ -19,6 +19,8 @@ import { CoreService } from './core.service';
 import { PlayModule } from './play/play.module';
 import { ResultComponent } from './components/result/result.component';
 import { CertificateComponent } from './components/certificate/certificate.component';
+import { ProfileComponent } from './components/profile/profile.component';
+import { ToolbarComponent } from './components/toolbar/toolbar.component';
 
 @NgModule({
   declarations: [
@@ -29,7 +31,9 @@ import { CertificateComponent } from './components/certificate/certificate.compo
     FooterComponent,
     ExamViewComponent,
     ResultComponent,
-    CertificateComponent
+    CertificateComponent,
+    ProfileComponent,
+    ToolbarComponent
   ],
   imports: [
     BrowserModule,

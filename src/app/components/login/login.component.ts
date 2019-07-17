@@ -4,6 +4,7 @@ import { AuthenticationService } from 'src/app/authentication.service';
 import { MatSnackBar, MatDialog, MatDialogRef } from '@angular/material';
 import { ExamViewComponent } from '../exam-view/exam-view.component';
 import { PlayService } from 'src/app/play/play.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -17,6 +18,7 @@ export class LoginComponent implements OnInit {
 
     // @Inject(MAT_DIALOG_DATA) public data: DialogData
   constructor(
+    private router: Router,
     public dialogRef: MatDialogRef<LoginComponent>,
     private snackBar: MatSnackBar,
     private playService: PlayService,
@@ -50,8 +52,10 @@ export class LoginComponent implements OnInit {
         (response) => {
           this.loading = false;
           if (response['status'] === 'success') {
-            this.playService.openDialog();
+            // this.playService.openDialog();
+            this.router.navigate(['home']);
             this.loginForm.reset();
+            this.dialogRef.close();
           } else {
             let msg = response['message'] ;
             if (response['object'] && response['object']['error']) {

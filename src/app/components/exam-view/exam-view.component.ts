@@ -23,7 +23,7 @@ export class ExamViewComponent implements OnInit {
     public dialog: MatDialog,
     private snackBar: MatSnackBar,
     private formBuilder: FormBuilder,
-    public dialogRef: MatDialogRef<ExamViewComponent>
+    // public dialogRef: MatDialogRef<ExamViewComponent>
   ) { }
 
   ngOnInit() {
@@ -49,7 +49,7 @@ export class ExamViewComponent implements OnInit {
     const dialogRef = this.dialog.open(ResultComponent, {
       width: '60%',
       data: {examId: exam.examId,
-              cadidateId: JSON.parse(localStorage.getItem('currentEndUser')).userId,
+              candidateId: JSON.parse(localStorage.getItem('currentEndUser')).userId,
               testConductorHasTestCodeId: exam.testConductorHasTestCodeId}
     });
 
@@ -72,11 +72,6 @@ export class ExamViewComponent implements OnInit {
 
   start(tinyKey, examId): void {
     this.authenticationService.openConductor(tinyKey);
-  }
-
-  logout() {
-    this.authenticationService.logout();
-    this.dialogRef.close();
   }
 
   onSubmit() {

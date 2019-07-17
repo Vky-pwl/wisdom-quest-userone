@@ -1,40 +1,6 @@
 
-<mat-grid-list 
-cols="4"
-rowHeight="45px"
-gutterSize="0"
-class="border-bottom">
 
-<mat-grid-tile
-                [colspan]="2"
-                [rowspan]="1">
-              
-                
-
-</mat-grid-tile>
-
-
-
-<mat-grid-tile
-                [colspan]="2"
-                [rowspan]="1"
-                >
-                <div class="header-actions">
-                    <mat-list>
-                        <mat-list-item>
-                          <h3 matLine class="username">{{authenticationService?.currentEndUser?.firstName}}</h3>
-                          <p matLine>
-                            <span class="college-name">{{authenticationService?.currentEndUser?.collegeVo?.collegeName}}</span>
-                          
-                          </p>
-                        </mat-list-item>
-                      </mat-list>
-                <i class="material-icons" matTooltip="Logout" (click)="logout()">
-                    power_settings_new
-                </i>
-              </div>
-</mat-grid-tile>
-</mat-grid-list>
+<app-toolbar></app-toolbar>
 <mat-grid-list 
 cols="4"
 rowHeight="75px"
@@ -42,17 +8,17 @@ gutterSize="0"
 class="border-bottom">
 
 <mat-grid-tile
-                [colspan]="2"
+                [colspan]="4"
                 [rowspan]="1">
                 <div class="brand d-flex justify-content-center align-items-center">
                     <!-- <img src="assets/images/logo.jpg" height="42" width="42"> -->
-                    <form [formGroup]="licenseForm" (ngSubmit)="onSubmit()"> 
+                    <form [formGroup]="licenseForm" (ngSubmit)="onSubmit()" class="license-form"> 
                     <mat-form-field appearance="outline" class="pb-0 mr-2">
                       <mat-label>License</mat-label>
                       <input  type="password" formControlName="license" matInput>
                       <mat-hint>Enter lincense code here to start new exam</mat-hint>
                   </mat-form-field>
-                  <button type="submit" [disabled]="goLoading" class="bg-grey  mb-18" mat-stroked-button >GO</button>
+                  <button type="submit" [disabled]="goLoading" class="bg-grey m-10" mat-stroked-button >GO</button>
                 </form>
                 </div>
                 
@@ -78,34 +44,31 @@ class="border-bottom">
           </p>
         </mat-card-content>
         <mat-card-actions>
-          <button mat-fab  (click)="start(exam.tinyKey,exam.examId)"
+          <button  mat-button (click)="start(exam.tinyKey,exam.examId)" class="bg-grey"
           *ngIf="!(exam.examStatus === 'PRISTINE' || exam.examStatus === 'COMPLETED')">
-          <i class="material-icons"  matTooltip="Resume" >
+          <!-- <i class="material-icons"  matTooltip="Resume" >
               replay
-              </i>
+              </i> -->
+              Resume
         </button>
-          <button mat-fab (click)="start(exam.tinyKey,exam.examId)"
+          <button mat-button (click)="start(exam.tinyKey,exam.examId)" class="bg-grey"
           *ngIf="exam.examStatus === 'PRISTINE'" 
           >
         
-          <i class="material-icons" matTooltip="Start" >
+          <!-- <i class="material-icons" matTooltip="Start" >
               play_arrow
-              </i>
+              </i> -->
+              Start
 
             
         </button>
          
-        
-          <i class="material-icons" matTooltip="Result" (click)="result(exam)"
-          *ngIf="exam.examStatus === 'COMPLETED'">
-            insert_chart
-              </i>
-          <i class="material-icons" matTooltip="Certificate" (click)="certificate(exam)"
-          *ngIf="exam.examStatus === 'COMPLETED'">
-          receipt
-              </i>
-
-             
+              <button mat-button (click)="result(exam)" class="bg-grey" *ngIf="exam.examStatus === 'COMPLETED'">
+                  Result
+              </button>
+              <button mat-button (click)="certificate(exam)" *ngIf="exam.examStatus === 'COMPLETED'" class="bg-grey">
+                  Certificate
+              </button>
       
         </mat-card-actions>
       </mat-card>

@@ -1,0 +1,29 @@
+<app-toolbar></app-toolbar>
+<mat-card>
+    <mat-card-title>Candidate Profile</mat-card-title>
+    <form [formGroup]="candidateForm" (ngSubmit)="onSubmit()" class="profileForm">
+
+        <mat-card-content class="d-flex flex-column justify-content-center align-items-start">
+           
+            <mat-form-field appearance="outline">
+                <mat-label>First Name</mat-label>
+                <input  type="text" formControlName="firstName" matInput>
+                <mat-error *ngIf="submitted && f.firstName.errors && f.firstName.errors.required" >First Name is required</mat-error>
+             </mat-form-field>
+            <mat-form-field appearance="outline">
+                <mat-label>Middle Name</mat-label>
+                <input  type="text" formControlName="middleName" matInput>
+             </mat-form-field>
+            <mat-form-field appearance="outline">
+                <mat-label>Last Name</mat-label>
+                <input  type="text" formControlName="lastName" matInput>
+                <mat-error *ngIf="submitted && f.lastName.errors && f.lastName.errors.required" >Lat Name is required</mat-error>
+             </mat-form-field>
+            
+        </mat-card-content> 
+        
+       <mat-card-actions>
+         
+       </mat-card-actions>
+    </form>
+</mat-card>

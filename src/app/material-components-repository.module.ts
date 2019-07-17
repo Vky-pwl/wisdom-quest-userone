@@ -4,8 +4,9 @@ import {MatButtonModule, MatCheckboxModule,
     MatCardModule, MatGridListModule,
      MatSnackBarModule,
       MatDialogModule,
+      MatMenuModule,
       MatRadioModule, MatTooltipModule, MatListModule, MatExpansionModule,
-       MatBottomSheetModule, MatTabsModule} from '@angular/material';
+       MatBottomSheetModule, MatTabsModule, MatToolbarModule} from '@angular/material';
 import { ReplacePipe } from './replace.pipe';
 import { OrderByPipe } from './order.pipe';
 
@@ -25,6 +26,8 @@ import { OrderByPipe } from './order.pipe';
             MatRadioModule,
             MatTooltipModule,
             MatListModule,
+            MatMenuModule,
+            MatToolbarModule,
             MatCheckboxModule],
   exports: [ReplacePipe, OrderByPipe,
     MatExpansionModule,
@@ -40,6 +43,8 @@ import { OrderByPipe } from './order.pipe';
             MatDialogModule,
             MatRadioModule,
             MatListModule,
+            MatMenuModule,
+            MatToolbarModule,
             MatCheckboxModule],
 })
 export class MaterialComponentsRepositoryModule { }

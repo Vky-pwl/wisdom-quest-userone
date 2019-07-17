@@ -1,0 +1,139 @@
+import { Component, OnInit } from '@angular/core';
+import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { CoreService } from 'src/app/core.service';
+
+@Component({
+  selector: 'app-profile',
+  templateUrl: './profile.component.html',
+  styleUrls: ['./profile.component.scss']
+})
+export class ProfileComponent implements OnInit {
+
+  candidateForm: FormGroup;
+  title: string;
+  loading = false;
+  submitted = false;
+  selectedCandidate: any;
+  collegeList;
+  specializationList;
+  get f() {
+    return this.candidateForm.controls;
+  }
+
+  onSubmit() {
+    this.submitted = true;
+    if (this.candidateForm.invalid) {
+      return;
+    }
+
+    const requestPayload = JSON.parse(JSON.stringify(this.candidateForm.value));
+    requestPayload.collegeVo  = {
+      collegeId: this.candidateForm.value.collegeId
+    };
+
+    requestPayload.specializationVo  = {
+      specializationId: this.candidateForm.value.specializationId
+    };
+    requestPayload.dateOfBirth = new Date(requestPayload.dateOfBirth).getTime();
+  }
+
+
+  constructor(private formBuilder: FormBuilder,
+    private coreService: CoreService
+    ) {
+  }
+
+  ngOnInit() {
+
+    let candidateForm = {};
+    if (this.selectedCandidate) {
+      candidateForm = {
+        userId: [this.selectedCandidate.userId],
+        active: true,
+        addressLine1: [this.selectedCandidate.addressLine1],
+        addressLine2: [this.selectedCandidate.addressLine2],
+        adhaarNumber: [this.selectedCandidate.adhaarNumber],
+        city: [this.selectedCandidate.city],
+        contactEmail: [this.selectedCandidate.contactEmail, Validators.required],
+        contactNumber: [this.selectedCandidate.contactNumber, Validators.required],
+        country: [this.selectedCandidate.country],
+        dateOfBirth: [new Date(this.selectedCandidate.dateOfBirth)],
+        firstName: [this.selectedCandidate.firstName],
+        gender: [this.selectedCandidate.gender],
+        lastName: [this.selectedCandidate.lastName],
+        middleName: [this.selectedCandidate.middleName],
+        password: [''],
+        pinCode: [this.selectedCandidate.pinCode],
+        // tslint:disable-next-line:max-line-length
+        specializationId: [this.selectedCandidate.specializationVo ? this.selectedCandidate.specializationVo.specializationId : 1, Validators.required],
+        state: [this.selectedCandidate.state],
+        tenthPercentage: [this.selectedCandidate.tenthPercentage]
+      };
+    } else {
+
+
+      candidateForm = {
+        active: true,
+        addressLine1: [''],
+        addressLine2: [''],
+        adhaarNumber: [''],
+        city: [''],
+        contactEmail: ['', Validators.required],
+        contactNumber: ['', Validators.required],
+        country: [''],
+        dateOfBirth: [new Date()],
+        firstName: [''],
+        gender: [''],
+        lastName: [''],
+        middleName: [''],
+        password: [''],
+        pinCode: [''],
+        specializationId: ['', Validators.required],
+        state: [''],
+        tenthPercentage: ['']
+      };
+
+        candidateForm['collegeId']  =  ['', Validators.required];
+    }
+
+    this.getCollegeList();
+    this.getSpecializationList();
+    this.candidateForm = this.formBuilder.group(candidateForm);
+  }
+
+  getCollegeList(): void {
+    const req = {
+      pageNo: 1,
+      pageSize: 100,
+      searchKey: '',
+      active: true};
+    this.coreService.getCollegeList(req).subscribe(
+      (response) => {
+        this.loading = false;
+        if (response['status'] === 'success') {
+                this.collegeList = response['object']['collegeVoList'];
+        }
+      }
+    );
+  }
+
+  getSpecializationList(): void {
+    const req = {
+      pageNo: 1,
+      pageSize: 10,
+      searchKey: '',
+      active: true};
+    this.coreService.getSpecializationList(req).subscribe(
+      (response) => {
+        this.loading = false;
+        if (response['status'] === 'success') {
+                this.specializationList = response['object']['specializationVoList'];
+        }
+      }
+    );
+  }
+
+
+
+
+}

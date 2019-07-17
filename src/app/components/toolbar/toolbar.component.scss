@@ -1,0 +1,19 @@
+.top-banner{
+    background: #607d8b;
+}
+.header-actions{
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    color: white;
+    width: 90%;
+    height: 100%;
+    .username{
+        text-transform: capitalize;
+        color: white;
+    }
+    .college-name{
+        color: white;
+        font-size: 11px;
+    }
+}
