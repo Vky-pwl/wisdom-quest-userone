@@ -21,6 +21,7 @@ import { ResultComponent } from './components/result/result.component';
 import { CertificateComponent } from './components/certificate/certificate.component';
 import { ProfileComponent } from './components/profile/profile.component';
 import { ToolbarComponent } from './components/toolbar/toolbar.component';
+import { SignUpComponent } from './components/sign-up/sign-up.component';
 
 @NgModule({
   declarations: [
@@ -33,7 +34,8 @@ import { ToolbarComponent } from './components/toolbar/toolbar.component';
     ResultComponent,
     CertificateComponent,
     ProfileComponent,
-    ToolbarComponent
+    ToolbarComponent,
+    SignUpComponent
   ],
   imports: [
     BrowserModule,
@@ -50,6 +52,6 @@ import { ToolbarComponent } from './components/toolbar/toolbar.component';
     { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },
   ],
   bootstrap: [AppComponent],
-  entryComponents: [LoginComponent, ExamViewComponent, ResultComponent, CertificateComponent]
+  entryComponents: [LoginComponent, SignUpComponent, ExamViewComponent, ResultComponent, CertificateComponent]
 })
 export class AppModule { }

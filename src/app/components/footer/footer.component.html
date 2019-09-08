@@ -1,98 +1,48 @@
-<mat-grid-list  gutterSize="0" [cols]="breakpoint" rowHeight="100px" (window:resize)="onResize($event)">
-            <mat-grid-tile
-                [colspan]="1"
-                [rowspan]="3"
-                >
-                <div class="wh100 bg-dark footer-column company-column">
+<footer class="footer">
+    <div class="footer__logo-box">
 
-                    <div class="company">Wisdom Quest</div>
-                    <p> Wisdom Quest Learning Resources
-                        is an entity envisioned to make a
-                        difference in the education sector
-                        with a specific focus on offering quality 
-                        and professional education at an affordable price.
-                    </p>
-               </div>
-
-            </mat-grid-tile>
-
-
-        <mat-grid-tile
-        [colspan]="1"
-        [rowspan]="3"
-        >
-        <div class="wh100 bg-dark footer-column products-column">
-
-            <div class="products">Products</div>
-                 <p>
-                   ICAT
-                  </p>
-                  <p>
-                    GATE
-                  </p>
-                  <p>
-                    EMCAT
-                  </p>
-                  <p>
-                    MOCK GATE
-                  </p>
-       </div>
-
-    </mat-grid-tile>
-
-    
-
-    <mat-grid-tile
-    [colspan]="1"
-    [rowspan]="3"
-    >
-    <div class="wh100 bg-dark footer-column useful-links-column">
-
-        <div class="useful-links">Useful links</div>
-          <p>
-            <a href="http://www.wisdomquest.in/#about">About</a>
-          </p>
-          <p>
-            <a href="http://www.wisdomquest.in/#team">Team</a>
-          </p>
-          <p>
-            <a href="http://www.wisdomquest.in/#work">Services</a>
-          </p>
-          <p>
-            <a href="http://www.wisdomquest.in/#contact">Help</a>
-          </p>
-   </div>
-
-</mat-grid-tile>
+        <picture class="footer__logo">
+            <source srcset="assets/img/wq-icon.png 1x, assets/img/wq-icon.png 1x"
+                    media="(max-width: 37.5em)">
+            <img srcset="assets/img/wq-icon.png 1x, assets/img/wq-icon.png.png 1x"  height="52" width="52" alt="Full logo" src="assets/img/wq-icon.png">
+        </picture>
+        <div>
+            <picture class="social_logo">
+                <source srcset="assets/img/google_icon.svg, assets/img/google_icon.svg"
+                        media="(max-width: 37.5em)">
+                <img srcset="assets/img/google_icon.svg, assets/img/google_icon.svg" height="32" width="32" alt="Full logo" src="assets/img/google_icon.svg">
+            </picture>
+            <picture class="social_logo">
+                <source srcset="assets/img/wq-icon.png, assets/img/facebook_square_color.svg"
+                        media="(max-width: 37.5em)">
+                <img srcset="assets/img/facebook_square_color.svg, assets/img/facebook_square_color.svg" height="32" width="32" alt="Full logo" src="assets/img/facebook_square_color.svg">
+            </picture>
+            <picture class="social_logo">
+                <source srcset="assets/img/linkedin_square_color.svg, assets/img/linkedin_square_color.svg"
+                        media="(max-width: 37.5em)">
+                <img srcset="assets/img/linkedin_square_color.svg, assets/img/linkedin_square_color.svg"  height="32" width="32" alt="Full logo" src="assets/img/linkedin_square_color.svg">
+            </picture>
+        </div>
 
 
-    <mat-grid-tile
-    [colspan]="1"
-    [rowspan]="3"
-    >
-    <div class="wh100 bg-dark footer-column contact-column">
-
-        <div class="contact">Contact</div>
-        <p>
-            <span>
-                    <mat-icon>home </mat-icon>
-            </span>
-                 Obulreddy Complex, Apsara Circle, Kadapa-516002</p>
-        <p>
-                <span>
-                        <mat-icon>mail </mat-icon>
-                </span> www.wisdomquest.in </p>
-        <p>
-                <span>
-                        <mat-icon>phone </mat-icon>
-                </span> + 91 779 935 1744</p>
-        <p>
-                <span>
-                        <mat-icon>phone </mat-icon>
-                </span> + 91 779 935 1744</p>
-   </div>
-
-</mat-grid-tile>
-
-
-</mat-grid-list>
+        
+    </div>
+    <div class="row">
+        <div class="col-1-of-2">
+            <div class="footer__navigation">
+                <ul class="footer__list">
+                    <li class="footer__item"><a href="#" class="footer__link">Company</a></li>
+                    <li class="footer__item"><a href="#" class="footer__link">Contact us</a></li>
+                    <li class="footer__item"><a href="#" class="footer__link">Carrers</a></li>
+                    <li class="footer__item"><a href="#" class="footer__link">Privacy policy</a></li>
+                    <li class="footer__item"><a href="#" class="footer__link">Terms</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="col-1-of-2">
+            <p class="footer__copyright">
+              Wisdom Quest Learning Resources @ 2019
+            </p>
+        </div>
+    </div>
+</footer>

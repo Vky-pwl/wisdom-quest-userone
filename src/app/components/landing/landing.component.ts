@@ -2,8 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { MatSnackBar } from '@angular/material';
 import { LoginComponent } from '../login/login.component';
-import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material';
+import {MatDialog} from '@angular/material';
 import { AuthenticationService } from 'src/app/authentication.service';
+import { SignUpComponent } from '../sign-up/sign-up.component';
 
 @Component({
   selector: 'app-landing',
@@ -88,8 +89,13 @@ this.authenticationService.signup(req)
 
 }
 
-openSnackBar() {
+openLogin() {
   this.snackBar.openFromComponent(LoginComponent, {
+    duration: 500,
+  });
+}
+openSignUp() {
+  this.snackBar.openFromComponent(SignUpComponent, {
     duration: 500,
   });
 }
