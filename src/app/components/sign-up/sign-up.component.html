@@ -38,6 +38,14 @@
                       <mat-label>Contact</mat-label>
                       <input  formControlName="contactNumber" matInput>
                     </mat-form-field>
+                    
+                    <mat-form-field  appearance="outline">
+                      <mat-label>Specialization</mat-label>
+                      <select matNativeControl required formControlName="specializationId">
+                        <option value="">--Select--</option>
+                          <option *ngFor="let specialization of specializationList" [ngValue]="specialization.specializationId">{{ specialization.specializationName }}</option>
+                      </select>
+                    </mat-form-field>
 
                     <mat-form-field appearance="outline">
                         <mat-label>Password</mat-label>

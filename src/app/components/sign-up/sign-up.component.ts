@@ -12,6 +12,7 @@ export class SignUpComponent implements OnInit {
   signUpForm: FormGroup;
   submitted = false;
   loading = true;
+  specializationList = [];
 
     // @Inject(MAT_DIALOG_DATA) public data: DialogData
   constructor(private formBuilder: FormBuilder,
@@ -29,7 +30,25 @@ export class SignUpComponent implements OnInit {
       contactNumber: ['', [Validators.required]],
       password: ['', [Validators.required]],
       license: ['', Validators.required],
+      specializationId: ['', Validators.required]
   });
+  this.getSpecializationList();
+  }
+
+  getSpecializationList(): void {
+    const req = {
+      pageNo: 1,
+      pageSize: 10,
+      searchKey: '',
+      active: true};
+    this.authenticationService.getSpecializationList(req).subscribe(
+      (response) => {
+        this.loading = false;
+        if (response['status'] === 'success') {
+                this.specializationList = response['object']['specializationVoList'];
+        }
+      }
+    );
   }
 
   get f() {
@@ -56,7 +75,8 @@ export class SignUpComponent implements OnInit {
       contactNumber: this.f.contactNumber.value,
       firstName: this.f.firstName.value,
       lastName: this.f.lastName.value,
-      gender: this.f.gender.value
+      gender: this.f.gender.value,
+      specializationId: this.f.specializationId
 };
 this.authenticationService.signup(req)
  .pipe()

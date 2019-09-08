@@ -4,6 +4,7 @@ import { map } from 'rxjs/operators';
 import { Router } from '@angular/router';
 import { GlobalVariable } from './path-config';
 
+const GET_SPECIALIZATION_LIST = 'specialization/list';
 
 @Injectable()
 export class AuthenticationService {
@@ -88,5 +89,9 @@ export class AuthenticationService {
             const left = 0;
             const configuration = `top=${top},left=${left},width=${width},height=${height}`;
             window.open(url, 'Wisdom Quest', configuration);
+      }
+
+      getSpecializationList(request) {
+        return this.http.post(`${GlobalVariable.BASE_PUBLIC_URL}${GET_SPECIALIZATION_LIST}`, request);
       }
 }
