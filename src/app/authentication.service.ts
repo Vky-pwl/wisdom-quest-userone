@@ -92,6 +92,6 @@ export class AuthenticationService {
       }
 
       getSpecializationList(request) {
-        return this.http.post(`${GlobalVariable.BASE_PUBLIC_URL}${GET_SPECIALIZATION_LIST}`, request);
+        return this.http.post(`${GlobalVariable.BASE_API_URL}${GET_SPECIALIZATION_LIST}`, request);
       }
 }
