@@ -45,11 +45,8 @@ export class AuthenticationService {
                         this.openConductor(response['object']['tinyKey']);
                         return response;
                     }
-                } else {
                 }
                 return response;
-            },
-            err => {
             }
             ));
     }

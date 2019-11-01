@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { AuthenticationService } from 'src/app/authentication.service';
 import { MatSnackBar, MatDialog } from '@angular/material';
+import { map, catchError } from 'rxjs/operators';
+import { of } from 'rxjs';
 
 @Component({
   selector: 'app-sign-up',
@@ -76,10 +78,24 @@ export class SignUpComponent implements OnInit {
       firstName: this.f.firstName.value,
       lastName: this.f.lastName.value,
       gender: this.f.gender.value,
-      specializationId: this.f.specializationId
+      specializationId: this.f.specializationId.value
 };
 this.authenticationService.signup(req)
- .pipe()
+ .pipe( map(response => {
+  if (response['status'] === 'success') {
+      if (response['object']) {
+          return response['object'];
+      }
+  } else {
+      return of({});
+  }
+},
+err => {
+return of({});
+}
+), catchError((_err) => {
+return of({});
+}))
  .subscribe(
    (response) => {
      this.loading = false;

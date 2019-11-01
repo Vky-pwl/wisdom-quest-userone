@@ -1,76 +1,47 @@
 
-
 <app-toolbar></app-toolbar>
-<mat-grid-list 
-cols="4"
-rowHeight="75px"
-gutterSize="0"
-class="border-bottom">
-
-<mat-grid-tile
-                [colspan]="4"
-                [rowspan]="1">
-                <div class="brand d-flex justify-content-center align-items-center">
-                    <!-- <img src="assets/images/logo.jpg" height="42" width="42"> -->
-                    <form [formGroup]="licenseForm" (ngSubmit)="onSubmit()" class="license-form"> 
-                    <mat-form-field appearance="outline" class="pb-0 mr-2">
-                      <mat-label>License</mat-label>
-                      <input  type="password" formControlName="license" matInput>
-                      <mat-hint>Enter lincense code here to start new exam</mat-hint>
-                  </mat-form-field>
-                  <button type="submit" [disabled]="goLoading" class="bg-grey m-10" mat-stroked-button >GO</button>
-                </form>
-                </div>
+<div class="main-container">
+    <section class="section-about exam-search">
+        <div class="row">
+            <div class="col-1-of-2">
                 
-
-</mat-grid-tile>
-
-
-
-
-</mat-grid-list>
-
-<div class="exam-list-container">
-    <mat-card *ngFor="let exam of examList" class="exam-card" color="primary">
-        <mat-card-header>
-          <div mat-card-avatar class="exam-img">{{exam.examName.substr(0,1)}}</div>
-          <mat-card-title>{{exam.examName}}</mat-card-title>
-          <mat-card-subtitle>{{exam.examCategoryVo?.examSubCategoryName}}</mat-card-subtitle>
-        </mat-card-header>
-        <img mat-card-image>
-        <mat-card-content>
-          <p [innerHtml]="exam.examDescription">
-          
-          </p>
-        </mat-card-content>
-        <mat-card-actions>
-          <button  mat-button (click)="start(exam.tinyKey,exam.examId)" class="bg-grey"
-          *ngIf="!(exam.examStatus === 'PRISTINE' || exam.examStatus === 'COMPLETED')">
-          <!-- <i class="material-icons"  matTooltip="Resume" >
-              replay
-              </i> -->
-              Resume
-        </button>
-          <button mat-button (click)="start(exam.tinyKey,exam.examId)" class="bg-grey"
-          *ngIf="exam.examStatus === 'PRISTINE'" 
-          >
-        
-          <!-- <i class="material-icons" matTooltip="Start" >
-              play_arrow
-              </i> -->
-              Start
-
-            
-        </button>
-         
-              <button mat-button (click)="result(exam)" class="bg-grey" *ngIf="exam.examStatus === 'COMPLETED'">
-                  Result
-              </button>
-              <button mat-button (click)="certificate(exam)" *ngIf="exam.examStatus === 'COMPLETED'" class="bg-grey">
-                  Certificate
-              </button>
+            </div>
+            <div class="col-1-of-2">
+                  
+            </div>
+        </div>
+        <div class="u-center-text u-margin-bottom-big">
+            <form [formGroup]="licenseForm" (ngSubmit)="onSubmit()" class="license-form"> 
+                <mat-form-field >
+                  <input  type="password" formControlName="license" placeholder="License" matInput>
+                  <mat-icon matSuffix (click)="onSubmit()">mode_subdirectory_arrow_right</mat-icon>
+                  <mat-hint>Enter lincense code here to start new exam</mat-hint>
+                  
+              </mat-form-field>
+              <!-- <button type="submit" [disabled]="goLoading" class=" m-10" mat-stroked-button >GO</button> -->
+             
+            </form>
+        </div>
       
-        </mat-card-actions>
-      </mat-card>
-
+        
+      </section>
+  <section class="section-features exam-list-container">
+      <div class="time">Today- Dec 20, 2018</div>
+                
+    <div class="row">
+        <div class="col-1-of-4" *ngFor="let exam of examList" >
+            <div class="feature-box">
+                <i class="feature-box__icon icon-basic-world">
+                  <img  src=" http://wisdomquest.in/image/icat.png" height="100px"/>
+                </i>
+                
+               
+                <h3 class="heading-tertiary u-margin-bottom-small">Mock Gate</h3>
+                <p class="feature-box__text" [innerHtml]="examm.examDescriptionData">
+                     
+                </p>
+            </div>
+        </div>
+    </div>
+  </section>
 </div>

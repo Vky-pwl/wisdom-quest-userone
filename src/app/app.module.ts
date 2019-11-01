@@ -22,6 +22,11 @@ import { CertificateComponent } from './components/certificate/certificate.compo
 import { ProfileComponent } from './components/profile/profile.component';
 import { ToolbarComponent } from './components/toolbar/toolbar.component';
 import { SignUpComponent } from './components/sign-up/sign-up.component';
+import { LandingHeaderComponent } from './components/landing/landing-header/landing-header.component';
+import { AboutUsComponent } from './components/landing/about-us/about-us.component';
+import { FeatureComponent } from './components/landing/feature/feature.component';
+import { ProductComponent } from './components/landing/product/product.component';
+import { StoriesComponent } from './components/landing/stories/stories.component';
 
 @NgModule({
   declarations: [
@@ -35,7 +40,12 @@ import { SignUpComponent } from './components/sign-up/sign-up.component';
     CertificateComponent,
     ProfileComponent,
     ToolbarComponent,
-    SignUpComponent
+    SignUpComponent,
+    LandingHeaderComponent,
+    AboutUsComponent,
+    FeatureComponent,
+    ProductComponent,
+    StoriesComponent
   ],
   imports: [
     BrowserModule,

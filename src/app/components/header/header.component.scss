@@ -2,18 +2,24 @@
 //     box-shadow: 0px 1px 0px 0px #ddd;
 // }
 
-.brand{
-    display: block;
-    font-size: 1.5rem;
-    margin-left: 1rem;
-    font-weight: 400;
-    letter-spacing: 0.3rem;
-    font-family: sans-serif;
+.brand {
+  display: block;
+  font-size: 1.5rem;
+  margin-left: 1rem;
+  font-weight: 400;
+  letter-spacing: 0.3rem;
+  font-family: sans-serif;
 }
 
-.wq-logo{
-    margin: 5px;
+.wq-logo {
+  margin: 5px;
 }
-.m-1{
-    margin: 1rem;
+
+.m-1 {
+  margin: 1rem;
+}
+
+.login-button {
+  background: #209cee;
+  color: #fff;
 }
